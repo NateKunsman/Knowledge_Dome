@@ -16,6 +16,7 @@ using Microsoft.Owin.Security.OAuth;
 using Knowledge_Dome.Models;
 using Knowledge_Dome.Providers;
 using Knowledge_Dome.Results;
+using Dome.Data;
 
 namespace Knowledge_Dome.Controllers
 {
