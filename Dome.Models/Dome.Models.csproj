@@ -54,6 +54,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthorCreate.cs" />
+    <Compile Include="AuthorDetail.cs" />
+    <Compile Include="AuthorEdit.cs" />
+    <Compile Include="AuthorList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
