@@ -30,6 +30,7 @@ namespace Dome.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+        //Get Genre
         public IEnumerable<GenreListItem> GetGenres()
         {
             using (var ctx = new ApplicationDbContext())
@@ -46,6 +47,11 @@ namespace Dome.Services
                         );
                 return query.ToArray();
             }
+        }
+        //Get Genre By Id
+        public GenreDetail GetGenreById(int id)
+        {
+            using 
         }
     }
     

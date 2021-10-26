@@ -41,6 +41,11 @@ namespace Knowledge_Dome.Controllers
             return Ok();
         }
 
-
+        public IHttpActionResult Get(int id)
+        {
+            GenreService genreService = CreateGenreService();
+            var genre = genreService.GetGenreById(id);
+            return Ok(genre);
+        }
     }
 }
