@@ -17,6 +17,7 @@ using Knowledge_Dome.Models;
 using Knowledge_Dome.Providers;
 using Knowledge_Dome.Results;
 using Dome.Data;
+using Knowledge_Dome.Dome.Data;
 
 namespace Knowledge_Dome.Controllers
 {
