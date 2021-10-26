@@ -57,6 +57,8 @@
     <Compile Include="BookDetails.cs" />
     <Compile Include="BookEdit.cs" />
     <Compile Include="GenreCreate.cs" />
+    <Compile Include="GenreDetail.cs" />
+    <Compile Include="GenreEdit.cs" />
     <Compile Include="GenreListItem.cs" />
     <Compile Include="AuthorCreate.cs" />
     <Compile Include="AuthorDetail.cs" />
