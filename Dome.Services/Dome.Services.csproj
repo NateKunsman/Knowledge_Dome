@@ -55,6 +55,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GenreService.cs" />
+    <Compile Include="AuthorService.cs" />
+    <Compile Include="BookService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -68,6 +70,11 @@
     </ProjectReference>
     <ProjectReference Include="..\Dome.Models\Dome.Models.csproj">
       <Project>{ab22dd1a-0640-4fd8-ae64-66a02afc57ec}</Project>
+      <Project>{177D22BC-211F-4FBA-95E5-0C729F20153F}</Project>
+      <Name>Dome.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dome.Models\Dome.Models.csproj">
+      <Project>{AB22DD1A-0640-4FD8-AE64-66A02AFC57EC}</Project>
       <Name>Dome.Models</Name>
     </ProjectReference>
   </ItemGroup>
