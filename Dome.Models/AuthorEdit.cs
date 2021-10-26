@@ -8,7 +8,6 @@ namespace Dome.Models
 {
     public class AuthorEdit
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string FullName { get; set; }
     }
 }

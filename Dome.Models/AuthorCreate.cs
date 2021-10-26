@@ -9,7 +9,6 @@ namespace Dome.Models
     public class AuthorCreate
     {
         public int AuthorId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string FullName { get; set; }
     }
 }

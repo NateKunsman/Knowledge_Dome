@@ -24,8 +24,7 @@ namespace Dome.Services
                 new Author()
                 {
                     AuthorId = model.AuthorId,
-                    FirstName = model.FirstName,
-                    LastName = model.LastName
+                    FullName = model.FullName
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -39,7 +38,7 @@ namespace Dome.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var quary = ctx.Authors
-                    .Select(e => new AuthorList { FirstName = e.FirstName, LastName = e.LastName });
+                    .Select(e => new AuthorList { FullName = e.FullName });
 
                 return quary.ToArray();
             }
@@ -54,26 +53,24 @@ namespace Dome.Services
                 new AuthorDetail
                 {
                     AuthorId = entity.AuthorId,
-                    FirstName = entity.FirstName,
-                    LastName = entity.LastName
+                    FullName = entity.FullName,
                 };
             }
         }
         //Get Author by name
-        //public AuthorDetail GetAuthorByName(string name)
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var entity = ctx.Authors.Single(e => e.FullName == name);
-        //        return
-        //            new AuthorDetail
-        //            {
-        //                AuthorId = entity.AuthorId,
-        //                FirstName = entity.FirstName,
-        //                LastName = entity.LastName
-        //            };
-        //    }
-        //}
+        public AuthorDetail GetAuthorByName(string name)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Authors.Single(e => e.FullName == name);
+                return
+                    new AuthorDetail
+                    {
+                        AuthorId = entity.AuthorId,
+                        FullName = entity.FullName
+                    };
+           }
+        }
         //Edit Author
         public bool UpdateAuthor(AuthorEdit model)
         {
