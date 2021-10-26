@@ -54,11 +54,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GenreService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dome.Data\Dome.Data.csproj">
+      <Project>{177d22bc-211f-4fba-95e5-0c729f20153f}</Project>
+      <Name>Dome.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dome.Models\Dome.Models.csproj">
+      <Project>{ab22dd1a-0640-4fd8-ae64-66a02afc57ec}</Project>
+      <Name>Dome.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
