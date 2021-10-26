@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dome.Data
+namespace Dome.Models
 {
-    public class Genre
+    public class GenreDetail
     {
         [Required]
-        public  int GenreId { get; set; }
-        public string GenreName { get; set; }
+        public int GenreId { get; set; }
 
+        public string GenreName { get; set; }
     }
 }
