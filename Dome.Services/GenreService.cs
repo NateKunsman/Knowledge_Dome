@@ -17,6 +17,8 @@ namespace Dome.Services
         {
             _userId = userId;
         }
+        //CRUD
+        //Create
         public bool CreateGenre(GenreCreate model)
         {
             var entity =
@@ -30,7 +32,7 @@ namespace Dome.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        //Get Genre
+        //Get Genre (Read)
         public IEnumerable<GenreListItem> GetGenres()
         {
             using (var ctx = new ApplicationDbContext())
@@ -51,7 +53,38 @@ namespace Dome.Services
         //Get Genre By Id
         public GenreDetail GetGenreById(int id)
         {
-            using 
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Genres.Single(e => e.GenreId == id);
+                return
+                    new GenreDetail
+                    {
+                        GenreId = entity.GenreId,
+                        GenreName = entity.GenreName
+                    };
+            }
+        }
+
+        //Edit Genre (Update)
+        public bool UpdateGenre(GenreEdit model)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Genres.Single(e => e.GenreId == model.GenreId);
+
+                entity.GenreName = model.GenreName;
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        //Delete Genre (Delete)
+        public bool DeleteGenre(int id)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Genres.Single(e => e.GenreId == id);
+                ctx.Genres.Remove(entity);
+                return ctx.SaveChanges() == 1;
+            }
         }
     }
     

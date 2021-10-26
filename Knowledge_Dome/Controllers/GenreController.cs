@@ -20,7 +20,7 @@ namespace Knowledge_Dome.Controllers
             var genreService = new GenreService(userId);
             return genreService;
         }
-
+        // Get All Genre
         public IHttpActionResult Get()
         {
             GenreService genreService = CreateGenreService();
@@ -40,12 +40,35 @@ namespace Knowledge_Dome.Controllers
 
             return Ok();
         }
-
+        // Get By Genre Id
         public IHttpActionResult Get(int id)
         {
             GenreService genreService = CreateGenreService();
             var genre = genreService.GetGenreById(id);
             return Ok(genre);
+        }
+
+        //Edit Genre
+        public IHttpActionResult Put(GenreEdit genre)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateGenreService();
+
+            if (!service.UpdateGenre(genre))
+                return InternalServerError();
+
+            return Ok();
+        }
+        //Delete Genre
+        public IHttpActionResult Delete(int id)
+        {
+            var service = CreateGenreService();
+
+            if (!service.DeleteGenre(id))
+                return InternalServerError();
+            return Ok();
         }
     }
 }
