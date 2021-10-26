@@ -43,7 +43,7 @@ namespace Dome.Services
             {
                 var query = ctx
                     .Books
-                    .Select(e => new BookLists { BookId = e.BookId, Title = e.Title, AuthorName = e.Author.FirstName + e.Author.LastName, GenreName = e.Genre.GenreName });
+                    .Select(e => new BookLists { BookId = e.BookId, Title = e.Title, AuthorName = e.Author.FullName, GenreName = e.Genre.GenreName });
                 return query.ToArray();
             }
         }
@@ -59,7 +59,7 @@ namespace Dome.Services
                         BookId = entity.BookId,
                         Title = entity.Title,
                         BookLength = entity.BookLength,
-                        AuthorName = entity.Author.FirstName + entity.Author.LastName,
+                        AuthorName = entity.Author.FullName,
                         GenreName = entity.Genre.GenreName,
                         DatePublished = entity.DatePublished,
                         ReadingLevel = entity.ReadingLevel,
