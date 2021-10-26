@@ -44,7 +44,7 @@ namespace Dome.Services
                 return quary.ToArray();
             }
         }
-        //Get Authors by ID
+        //Get Author by ID
         public AuthorDetail GetAuthorById(int id)
         {
             using (var ctx = new ApplicationDbContext())
@@ -59,6 +59,21 @@ namespace Dome.Services
                 };
             }
         }
+        //Get Author by name
+        //public AuthorDetail GetAuthorByName(string name)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var entity = ctx.Authors.Single(e => e.FullName == name);
+        //        return
+        //            new AuthorDetail
+        //            {
+        //                AuthorId = entity.AuthorId,
+        //                FirstName = entity.FirstName,
+        //                LastName = entity.LastName
+        //            };
+        //    }
+        //}
         //Edit Author
         public bool UpdateAuthor(AuthorEdit model)
         {
