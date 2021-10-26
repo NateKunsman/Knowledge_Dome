@@ -38,17 +38,18 @@ namespace Dome.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var quary =
-                    ctx.Authors;
+                var quary = ctx.Authors
+                    .Select(e => new AuthorList { FirstName = e.FirstName, LastName = e.LastName });
+
                 return quary.ToArray();
             }
         }
         //Get Authors by ID
         public AuthorDetail GetAuthorById(int id)
         {
-            var entity =
-                ctx
-                    .Authors;
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Authors.Single(e => e.AuthorId == id);
             return
                 new AuthorDetail
                 {
@@ -56,6 +57,7 @@ namespace Dome.Services
                     FirstName = entity.FirstName,
                     LastName = entity.LastName
                 };
+            }
         }
         //Edit Author
         public bool UpdateAuthor(AuthorEdit model)
