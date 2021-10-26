@@ -78,7 +78,9 @@ namespace Dome.Services
             {
                 var entity =
                     ctx
-                        .Authors;
+                        .Authors
+                        .Single(e => e.AuthorId == model.AuthorId);
+                entity.FullName = model.FullName;
                 return ctx.SaveChanges() == 1;
             }
         }
