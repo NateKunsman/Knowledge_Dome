@@ -44,7 +44,8 @@ namespace Dome.Services
                             e =>
                                 new GenreListItem
                                 {
-                                    GenreId = e.GenreId
+                                    GenreId = e.GenreId,
+                                    GenreName = e.GenreName
                                 }
                         );
                 return query.ToArray();
