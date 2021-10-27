@@ -23,7 +23,6 @@ namespace Dome.Services
             var entity =
                 new Author()
                 {
-                    AuthorId = model.AuthorId,
                     FullName = model.FullName
                 };
             using (var ctx = new ApplicationDbContext())
