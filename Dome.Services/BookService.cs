@@ -17,7 +17,7 @@ namespace Dome.Services
         {
             _userId = userId;
         }
-
+        //Creating a New Book
         public bool Createbook(BookCreate model)
         {
             var entity = new Book()
@@ -36,7 +36,7 @@ namespace Dome.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-
+        //Getting a listing of all books
         public IEnumerable<BookLists> GetBooks()
         {
             using (var ctx = new ApplicationDbContext())
@@ -47,7 +47,7 @@ namespace Dome.Services
                 return query.ToArray();
             }
         }
-
+        //Getting the Book by Title
         public BookDetails GetBookByTitle(string title)
         {
             using (var ctx = new ApplicationDbContext())
@@ -68,6 +68,31 @@ namespace Dome.Services
             }
         }
 
+        public IEnumerable<BookLists> GetBookByAuthor(string authorName)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx
+                    .Books
+                    .Where(e => e.Author.FullName == authorName)
+                    .Select(e => new BookLists { BookId = e.BookId, Title = e.Title, AuthorName = e.Author.FullName, GenreName = e.Genre.GenreName });
+                return query.ToArray();
+            }
+        }
+
+        public IEnumerable<BookLists> GetBookByGenre(string genreName)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx
+                    .Books
+                    .Where(e => e.Genre.GenreName == genreName)
+                    .Select(e => new BookLists { BookId = e.BookId, Title = e.Title, AuthorName = e.Author.FullName, GenreName = e.Genre.GenreName });
+                return query.ToArray();
+            }
+        }
+
+        //Updating Books
         public bool UpdateBook(BookEdit model)
         {
             using(var ctx = new ApplicationDbContext())
@@ -83,7 +108,7 @@ namespace Dome.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-
+        //Deleting Books
         public bool DeleteBook(int bookId)
         {
             using (var ctx = new ApplicationDbContext())
