@@ -29,7 +29,7 @@ namespace Dome.Services
                 ReadingLevel = model.ReadingLevel,
                 AuthorId = model.AuthorId,
                 GenreId = model.GenreId,
-                OwnerId = _userId
+                //OwnerId = _userId
             };
 
             using (var ctx = new ApplicationDbContext())
@@ -65,7 +65,8 @@ namespace Dome.Services
                         GenreName = entity.Genre.GenreName,
                         DatePublished = entity.DatePublished,
                         ReadingLevel = entity.ReadingLevel,
-                        ISBN = entity.ISBN
+                        ISBN = entity.ISBN,
+                        //OwnerId = _userId
                     };
             }
         }
