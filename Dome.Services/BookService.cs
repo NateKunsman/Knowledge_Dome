@@ -68,7 +68,7 @@ namespace Dome.Services
             }
         }
 
-        public IEnumerable<BookLists> GetBookByAuthor(string authorName)
+        public IEnumerable<BookLists> GetBooksByAuthor(string authorName)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -80,7 +80,7 @@ namespace Dome.Services
             }
         }
 
-        public IEnumerable<BookLists> GetBookByGenre(string genreName)
+        public IEnumerable<BookLists> GetBooksByGenre(string genreName)
         {
             using (var ctx = new ApplicationDbContext())
             {
