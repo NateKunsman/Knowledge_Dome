@@ -32,7 +32,7 @@ namespace Dome.Data
         public int AuthorId { get; set; }
         public virtual Author Author { get; set; }
 
-        public Guid OwnerId { get; set; }
+        public Guid OwnerId { get; set; } 
 
     }
 }
