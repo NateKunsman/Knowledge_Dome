@@ -9,7 +9,7 @@ namespace Dome.Data
 {
     public class Genre
     {
-        [Required]
+        [Key]
         public  int GenreId { get; set; }
         public string GenreName { get; set; }
 
