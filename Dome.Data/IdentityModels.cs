@@ -37,7 +37,7 @@ namespace Knowledge_Dome.Dome.Data
         public DbSet<Genre> Genres { get; set; }
     }
 
-    public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
+/*    public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
     {
         public IdentityUserLoginConfiguration()
         {
@@ -51,5 +51,5 @@ namespace Knowledge_Dome.Dome.Data
         {
             HasKey(iur => iur.UserId);
         }
-    }
+    }*/
 }
