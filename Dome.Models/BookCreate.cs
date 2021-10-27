@@ -18,6 +18,8 @@ namespace Dome.Models
 
         public string ISBN { get; set; }
 
+        public string ReadingLevel { get; set; }
+
         public int AuthorId { get; set; }
 
         public int GenreId { get; set; }

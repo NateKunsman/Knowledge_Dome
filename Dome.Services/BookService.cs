@@ -26,8 +26,10 @@ namespace Dome.Services
                 BookLength = model.BookLength,
                 DatePublished = model.DatePublished,
                 ISBN = model.ISBN,
+                ReadingLevel = model.ReadingLevel,
                 AuthorId = model.AuthorId,
-                GenreId = model.GenreId
+                GenreId = model.GenreId,
+                OwnerId = _userId
             };
 
             using (var ctx = new ApplicationDbContext())

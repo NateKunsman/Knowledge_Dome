@@ -15,7 +15,7 @@ namespace Dome.Data
 
         [Required]
         public string Title { get; set; }
-
+        
         public int BookLength { get; set; }
 
         public string ReadingLevel { get; set; }
