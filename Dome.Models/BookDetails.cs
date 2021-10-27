@@ -23,5 +23,7 @@ namespace Dome.Models
         public string AuthorName { get; set; }
 
         public string GenreName { get; set; }
+
+        //public Guid OwnerId { get; set; }
     }
 }
