@@ -3,7 +3,7 @@ namespace Dome.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class firstmigration : DbMigration
+    public partial class Reset : DbMigration
     {
         public override void Up()
         {
@@ -13,7 +13,6 @@ namespace Dome.Data.Migrations
                     {
                         AuthorId = c.Int(nullable: false, identity: true),
                         FullName = c.String(nullable: false),
-                        UserId = c.Guid(nullable: false),
                     })
                 .PrimaryKey(t => t.AuthorId);
             
@@ -29,7 +28,6 @@ namespace Dome.Data.Migrations
                         ISBN = c.String(),
                         GenreId = c.Int(nullable: false),
                         AuthorId = c.Int(nullable: false),
-                        OwnerId = c.Guid(nullable: false),
                     })
                 .PrimaryKey(t => t.BookId)
                 .ForeignKey("dbo.Authors", t => t.AuthorId, cascadeDelete: true)
@@ -43,11 +41,22 @@ namespace Dome.Data.Migrations
                     {
                         GenreId = c.Int(nullable: false, identity: true),
                         GenreName = c.String(),
-                        UserId = c.Guid(nullable: false),
                     })
                 .PrimaryKey(t => t.GenreId);
             
             CreateTable(
+                "dbo.Favorites",
+                c => new
+                    {
+                        FavoriteId = c.Int(nullable: false, identity: true),
+                        UserId = c.Guid(nullable: false),
+                        BookId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.FavoriteId)
+                .ForeignKey("dbo.Books", t => t.BookId, cascadeDelete: true)
+                .Index(t => t.BookId);
+            
+/*            CreateTable(
                 "dbo.AspNetRoles",
                 c => new
                     {
@@ -55,9 +64,9 @@ namespace Dome.Data.Migrations
                         Name = c.String(nullable: false, maxLength: 256),
                     })
                 .PrimaryKey(t => t.Id)
-                .Index(t => t.Name, unique: true, name: "RoleNameIndex");
+                .Index(t => t.Name, unique: true, name: "RoleNameIndex");*/
             
-            CreateTable(
+/*            CreateTable(
                 "dbo.AspNetUserRoles",
                 c => new
                     {
@@ -68,7 +77,7 @@ namespace Dome.Data.Migrations
                 .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId)
-                .Index(t => t.RoleId);
+                .Index(t => t.RoleId);*/
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -90,7 +99,7 @@ namespace Dome.Data.Migrations
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.UserName, unique: true, name: "UserNameIndex");
             
-            CreateTable(
+/*            CreateTable(
                 "dbo.AspNetUserClaims",
                 c => new
                     {
@@ -113,7 +122,7 @@ namespace Dome.Data.Migrations
                     })
                 .PrimaryKey(t => new { t.LoginProvider, t.ProviderKey, t.UserId })
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId);
+                .Index(t => t.UserId);*/
             
         }
         
@@ -123,6 +132,7 @@ namespace Dome.Data.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.Favorites", "BookId", "dbo.Books");
             DropForeignKey("dbo.Books", "GenreId", "dbo.Genres");
             DropForeignKey("dbo.Books", "AuthorId", "dbo.Authors");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
@@ -131,6 +141,7 @@ namespace Dome.Data.Migrations
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.Favorites", new[] { "BookId" });
             DropIndex("dbo.Books", new[] { "AuthorId" });
             DropIndex("dbo.Books", new[] { "GenreId" });
             DropTable("dbo.AspNetUserLogins");
@@ -138,6 +149,7 @@ namespace Dome.Data.Migrations
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Favorites");
             DropTable("dbo.Genres");
             DropTable("dbo.Books");
             DropTable("dbo.Authors");

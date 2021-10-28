@@ -13,10 +13,10 @@ namespace Dome.Services
     {
         private readonly Guid _userId;
 
-        public GenreService(Guid userId)
+/*        public GenreService(Guid userId)
         {
             _userId = userId;
-        }
+        }*/
         //CRUD
         //Create
         public bool CreateGenre(GenreCreate model)

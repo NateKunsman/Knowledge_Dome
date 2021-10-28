@@ -12,10 +12,10 @@ namespace Dome.Services
     public class AuthorService
     {
         private readonly Guid _userId;
-        public AuthorService(Guid userId)
+/*        public AuthorService(Guid userId)
         {
             _userId = userId;
-        }
+        }*/
         //CRUD
         //Create Author
         public bool CreateAuthor(AuthorCreate model)

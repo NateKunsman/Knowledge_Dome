@@ -16,8 +16,8 @@ namespace Knowledge_Dome.Controllers
     {
         private GenreService CreateGenreService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var genreService = new GenreService(userId);
+            //var userId = Guid.Parse(User.Identity.GetUserId());
+            var genreService = new GenreService();
             return genreService;
         }
         // Get All Genre
