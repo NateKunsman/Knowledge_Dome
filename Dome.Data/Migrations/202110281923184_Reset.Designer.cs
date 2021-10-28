@@ -7,13 +7,13 @@ namespace Dome.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class firstmigration : IMigrationMetadata
+    public sealed partial class Reset : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(firstmigration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Reset));
         
         string IMigrationMetadata.Id
         {
-            get { return "202110271535480_first migration"; }
+            get { return "202110281923184_Reset"; }
         }
         
         string IMigrationMetadata.Source

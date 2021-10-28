@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FavoriteService.cs" />
     <Compile Include="GenreService.cs" />
     <Compile Include="AuthorService.cs" />
     <Compile Include="BookService.cs" />

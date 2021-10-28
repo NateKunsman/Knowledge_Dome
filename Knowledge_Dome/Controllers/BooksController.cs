@@ -77,8 +77,8 @@ namespace Knowledge_Dome.Controllers
 
         private BookService CreateBookService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var bookService = new BookService(userId);
+            //var userId = Guid.Parse(User.Identity.GetUserId());
+            var bookService = new BookService();
             return bookService;
         }
     }

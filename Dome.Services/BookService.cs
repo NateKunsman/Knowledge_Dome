@@ -13,10 +13,10 @@ namespace Dome.Services
     {
         private readonly Guid _userId;
 
-        public BookService(Guid userId)
+/*        public BookService(Guid userId)
         {
             _userId = userId;
-        }
+        }*/
         //Creating a New Book
         public bool Createbook(BookCreate model)
         {

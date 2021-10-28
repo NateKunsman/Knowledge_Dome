@@ -29,8 +29,8 @@ namespace Knowledge_Dome.Controllers
         }
         private AuthorService CreateAuthorService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var noteService = new AuthorService(userId);
+            //var userId = Guid.Parse(User.Identity.GetUserId());
+            var noteService = new AuthorService();
             return noteService;
         }
         public IHttpActionResult GetAuthorByName(string name)
