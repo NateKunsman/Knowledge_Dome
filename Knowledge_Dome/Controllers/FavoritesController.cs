@@ -41,5 +41,24 @@ namespace Knowledge_Dome.Controllers
             var favoriteService = new FavoriteService(userId);
             return favoriteService;
         }
+        public IHttpActionResult Put(FavoritesEdit favorite)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            var service = CreateFavoriteService();
+            if (!service.UpdateFavorites(favorite))
+                return InternalServerError();
+            return Ok();
+        }
+        [HttpDelete]
+        public IHttpActionResult Delete(int favoriteId)
+        {
+            var service = CreateFavoriteService();
+
+            if (!service.DeleteFavorite(favoriteId))
+                return InternalServerError();
+
+            return Ok();
+        }
     }
 }
