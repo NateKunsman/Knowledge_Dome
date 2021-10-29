@@ -44,5 +44,29 @@ namespace Dome.Services
                 return query.ToArray();
             }
         }
+
+        public bool UpdateFavorites(FavoritesEdit model)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Favorites.Single(e => e.FavoriteId == model.FavoritesId);
+                entity.BookId = model.BookId;
+                entity.UserId = model.UserId;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteFavorite(int favoriteId)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Favorites.Single(e => e.FavoriteId == favoriteId);
+
+                ctx.Favorites.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
