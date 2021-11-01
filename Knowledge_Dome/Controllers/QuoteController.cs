@@ -1,4 +1,6 @@
-﻿using Dome.Services;
+﻿using Dome.Models;
+using Dome.Services;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,10 +24,16 @@ namespace Knowledge_Dome.Controllers
                 return InternalServerError();
             return Ok();
         }
+        public IHttpActionResult Get()
+        {
+            QuoteService quoteService = CreateQuoteService();
+            var quotes = quoteService.GetAllQuotes();
+            return Ok(quotes);
+        }
         private QuoteService CreateQuoteService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            var quoteService = new QuoteService();
+            var quoteService = new QuoteService(userId);
             return quoteService;
         }
     }
