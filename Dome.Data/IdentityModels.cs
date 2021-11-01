@@ -36,6 +36,7 @@ namespace Knowledge_Dome.Dome.Data
         public DbSet<Author> Authors { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Favorite> Favorites { get; set; }
+        public DbSet<Quote> Quotes { get; set; }
     }
 
 /*    public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>

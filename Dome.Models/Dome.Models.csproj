@@ -70,6 +70,8 @@
     <Compile Include="BookCreate.cs" />
     <Compile Include="BookLists.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuoteCreate.cs" />
+    <Compile Include="QuoteList.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
