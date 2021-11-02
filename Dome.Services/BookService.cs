@@ -27,8 +27,7 @@ namespace Dome.Services
                 DatePublished = model.DatePublished,
                 ISBN = model.ISBN,
                 ReadingLevel = model.ReadingLevel,
-                AuthorId = model.AuthorId,
-                GenreId = model.GenreId,
+                AuthorId = model.AuthorId
                 //OwnerId = _userId
             };
 
@@ -45,8 +44,15 @@ namespace Dome.Services
             {
                 var query = ctx
                     .Books
-                    .Select(e => new BookLists { BookId = e.BookId, Title = e.Title, AuthorName = e.Author.FullName, GenreName = e.Genre.GenreName });
+                    .Select(e => new BookLists 
+                    { 
+                        BookId = e.BookId, 
+                        Title = e.Title, 
+                        AuthorName = e.Author.FullName,
+                    });
                 return query.ToArray();
+
+                
             }
         }
         //Getting the Book by Title
@@ -62,10 +68,14 @@ namespace Dome.Services
                         Title = entity.Title,
                         BookLength = entity.BookLength,
                         AuthorName = entity.Author.FullName,
-                        GenreName = entity.Genre.GenreName,
                         DatePublished = entity.DatePublished,
                         ReadingLevel = entity.ReadingLevel,
                         ISBN = entity.ISBN,
+                        Genres = entity.Genres.Select(n => new Genre
+                        {
+                            GenreId = n.Genre.GenreId,
+                            GenreName = n.Genre.GenreName
+                        }).ToList()
                         //OwnerId = _userId
                     };
             }
@@ -78,7 +88,7 @@ namespace Dome.Services
                 var query = ctx
                     .Books
                     .Where(e => e.Author.FullName == authorName)
-                    .Select(e => new BookLists { BookId = e.BookId, Title = e.Title, AuthorName = e.Author.FullName, GenreName = e.Genre.GenreName });
+                    .Select(e => new BookLists { BookId = e.BookId, Title = e.Title, AuthorName = e.Author.FullName });
                 return query.ToArray();
             }
         }
@@ -88,9 +98,9 @@ namespace Dome.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var query = ctx
-                    .Books
+                    .BookGenres
                     .Where(e => e.Genre.GenreName == genreName)
-                    .Select(e => new BookLists { BookId = e.BookId, Title = e.Title, AuthorName = e.Author.FullName, GenreName = e.Genre.GenreName });
+                    .Select(e => new BookLists { BookId = e.BookId, Title = e.Book.Title, AuthorName = e.Book.Author.FullName });
                 return query.ToArray();
             }
         }
@@ -120,6 +130,23 @@ namespace Dome.Services
 
                 ctx.Books.Remove(entity);
 
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        //Adding Genres
+
+        public bool AddGenreToBook(int genreId, int bookId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = new BookGenre
+                {
+                    BookId = bookId,
+                    GenreId = genreId
+                };
+
+                ctx.BookGenres.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }

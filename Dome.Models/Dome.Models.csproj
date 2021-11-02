@@ -77,5 +77,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dome.Data\Dome.Data.csproj">
+      <Project>{177D22BC-211F-4FBA-95E5-0C729F20153F}</Project>
+      <Name>Dome.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
