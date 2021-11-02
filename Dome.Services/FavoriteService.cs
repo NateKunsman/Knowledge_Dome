@@ -40,7 +40,7 @@ namespace Dome.Services
                 var query = ctx
                     .Favorites
                     .Where(e => e.UserId == userId)
-                    .Select(e => new FavoriteLists { BookTitle = e.Book.Title, AuthorName = e.Book.Author.FullName, GenreName = e.Book.Genre.GenreName });
+                    .Select(e => new FavoriteLists { BookTitle = e.Book.Title, AuthorName = e.Book.Author.FullName, Genres = e.Book.Genres.Select(n => new Genre { GenreName = n.Genre.GenreName }).ToList() });
                 return query.ToArray();
             }
         }

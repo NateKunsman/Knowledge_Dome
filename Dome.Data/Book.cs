@@ -24,9 +24,7 @@ namespace Dome.Data
 
         public string ISBN { get; set; }
 
-        [ForeignKey(nameof(Genre))]
-        public int GenreId { get; set; }
-        public virtual Genre Genre { get; set; }
+        public virtual ICollection<BookGenre> Genres { get; set; } = new List<BookGenre>();
 
         [ForeignKey(nameof(Author))]
         public int AuthorId { get; set; }

@@ -54,6 +54,19 @@ namespace Knowledge_Dome.Controllers
                 return InternalServerError();
             return Ok();
         }
+
+        [HttpPost]
+        public IHttpActionResult AddGenreToBook(int genreId, int bookId)
+        {
+            var service = CreateBookService();
+
+            if(service.AddGenreToBook(genreId, bookId))
+            {
+                return Ok();
+            }
+            return InternalServerError();
+        }
+
         [HttpPut]
         public IHttpActionResult Put(BookEdit book)
         {

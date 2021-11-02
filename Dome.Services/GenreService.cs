@@ -61,7 +61,7 @@ namespace Dome.Services
                     new GenreDetail
                     {
                         GenreId = entity.GenreId,
-                        GenreName = entity.GenreName
+                        GenreName = entity.GenreName,
                     };
             }
         }

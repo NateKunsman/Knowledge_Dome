@@ -74,12 +74,17 @@
   <ItemGroup>
     <Compile Include="Author.cs" />
     <Compile Include="Book.cs" />
+    <Compile Include="BookGenre.cs" />
     <Compile Include="Favorite.cs" />
     <Compile Include="Genre.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202110281923184_Reset.cs" />
-    <Compile Include="Migrations\202110281923184_Reset.Designer.cs">
-      <DependentUpon>202110281923184_Reset.cs</DependentUpon>
+    <Compile Include="Migrations\202111021330065_reset.cs" />
+    <Compile Include="Migrations\202111021330065_reset.Designer.cs">
+      <DependentUpon>202111021330065_reset.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111021428443_nextMigration.cs" />
+    <Compile Include="Migrations\202111021428443_nextMigration.Designer.cs">
+      <DependentUpon>202111021428443_nextMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -90,8 +95,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202110281923184_Reset.resx">
-      <DependentUpon>202110281923184_Reset.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202111021330065_reset.resx">
+      <DependentUpon>202111021330065_reset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111021428443_nextMigration.resx">
+      <DependentUpon>202111021428443_nextMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

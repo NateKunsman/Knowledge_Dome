@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dome.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,6 @@ namespace Dome.Models
         //public Guid UserId { get; set; }
         public string BookTitle { get; set; }
         public string AuthorName { get; set; }
-        public string GenreName { get; set; }
+        public List<Genre> Genres { get; set; }
     }
 }
