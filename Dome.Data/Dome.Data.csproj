@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="Author.cs" />
     <Compile Include="Book.cs" />
+    <Compile Include="BookAuthor.cs" />
     <Compile Include="BookGenre.cs" />
     <Compile Include="Favorite.cs" />
     <Compile Include="Genre.cs" />
@@ -85,6 +86,10 @@
     <Compile Include="Migrations\202111021428443_nextMigration.cs" />
     <Compile Include="Migrations\202111021428443_nextMigration.Designer.cs">
       <DependentUpon>202111021428443_nextMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111021749273_nextnextMigration.cs" />
+    <Compile Include="Migrations\202111021749273_nextnextMigration.Designer.cs">
+      <DependentUpon>202111021749273_nextnextMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -100,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111021428443_nextMigration.resx">
       <DependentUpon>202111021428443_nextMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111021749273_nextnextMigration.resx">
+      <DependentUpon>202111021749273_nextnextMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

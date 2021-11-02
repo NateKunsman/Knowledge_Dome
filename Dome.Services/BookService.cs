@@ -27,7 +27,6 @@ namespace Dome.Services
                 DatePublished = model.DatePublished,
                 ISBN = model.ISBN,
                 ReadingLevel = model.ReadingLevel,
-                AuthorId = model.AuthorId
                 //OwnerId = _userId
             };
 
@@ -44,16 +43,26 @@ namespace Dome.Services
             {
                 var query = ctx
                     .Books
-                    .Select(e => new BookLists 
-                    { 
-                        BookId = e.BookId, 
-                        Title = e.Title, 
-                        AuthorName = e.Author.FullName,
+                    .Select(e => new BookLists
+                    {
+                        BookId = e.BookId,
+                        Title = e.Title
                     });
                 return query.ToArray();
-
-                
             }
+/*            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx
+                    .BookGenres
+                    .Select(e => new BookLists
+                    {
+                        BookId = e.BookId,
+                        Title = e.Book.Title,
+                        AuthorName = e.Book.Author.FullName,
+                        Genres = e.Genre.GenreName.ToList()
+                    });
+                
+            }*/
         }
         //Getting the Book by Title
         public BookDetails GetBookByTitle(string title)
@@ -67,7 +76,6 @@ namespace Dome.Services
                         BookId = entity.BookId,
                         Title = entity.Title,
                         BookLength = entity.BookLength,
-                        AuthorName = entity.Author.FullName,
                         DatePublished = entity.DatePublished,
                         ReadingLevel = entity.ReadingLevel,
                         ISBN = entity.ISBN,
@@ -75,6 +83,11 @@ namespace Dome.Services
                         {
                             GenreId = n.Genre.GenreId,
                             GenreName = n.Genre.GenreName
+                        }).ToList(),
+                        AuthorName = entity.Authors.Select(n => new Author
+                        {
+                            AuthorId = n.Author.AuthorId,
+                            FullName = n.Author.FullName
                         }).ToList()
                         //OwnerId = _userId
                     };
@@ -86,9 +99,9 @@ namespace Dome.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var query = ctx
-                    .Books
+                    .BookAuthors
                     .Where(e => e.Author.FullName == authorName)
-                    .Select(e => new BookLists { BookId = e.BookId, Title = e.Title, AuthorName = e.Author.FullName });
+                    .Select(e => new BookLists { BookId = e.BookId, Title = e.Book.Title/*, AuthorName = e.Author.FullName*/ });
                 return query.ToArray();
             }
         }
@@ -100,7 +113,7 @@ namespace Dome.Services
                 var query = ctx
                     .BookGenres
                     .Where(e => e.Genre.GenreName == genreName)
-                    .Select(e => new BookLists { BookId = e.BookId, Title = e.Book.Title, AuthorName = e.Book.Author.FullName });
+                    .Select(e => new BookLists { BookId = e.BookId, Title = e.Book.Title, /*AuthorName = e.Book.Author.FullName*/ });
                 return query.ToArray();
             }
         }
@@ -147,6 +160,21 @@ namespace Dome.Services
                 };
 
                 ctx.BookGenres.Add(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool AddAuthorToBook(int authorId, int bookId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = new BookAuthor
+                {
+                    BookId = bookId,
+                    AuthorId = authorId
+                };
+
+                ctx.BookAuthors.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }

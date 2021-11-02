@@ -21,7 +21,7 @@ namespace Dome.Models
 
         public string ISBN { get; set; }
 
-        public string AuthorName { get; set; }
+        public List<Author> AuthorName { get; set; }
 
         public List<Genre> Genres { get; set; }
 
