@@ -37,7 +37,7 @@ namespace Dome.Services
             {
                 var quary = ctx
                     .Quotes
-                    .Select(e => new QuoteList { BookTitle = e.Book.Title, AuthorName = e.Book.Author.FullName, QuotedText = e.QuoteText  });
+                    .Select(e => new QuoteList { BookTitle = e.Book.Title, QuotedText = e.QuoteText  });
                 return quary.ToArray();
             }
         }

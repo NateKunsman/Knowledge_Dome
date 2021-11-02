@@ -13,6 +13,6 @@ namespace Dome.Data
         public  int GenreId { get; set; }
         public string GenreName { get; set; }
 
-        public virtual ICollection<BookGenre> Books { get; set; } = new List<BookGenre>();
+        //public virtual ICollection<BookGenre> Books { get; set; } = new List<BookGenre>();
     }
 }
