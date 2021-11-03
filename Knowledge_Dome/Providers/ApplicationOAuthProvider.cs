@@ -10,6 +10,8 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using Knowledge_Dome.Models;
+using Dome.Data;
+using Knowledge_Dome.Dome.Data;
 
 namespace Knowledge_Dome.Providers
 {
