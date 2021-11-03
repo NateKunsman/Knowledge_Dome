@@ -13,8 +13,8 @@ namespace Dome.Models
 
         public string Title { get; set; }
 
-        public List<Author> Authors { get; set; }
+        public ICollection<AuthorList> Authors { get; set; } = new List<AuthorList>();
 
-        public List<Genre> Genres { get; set; }
+        public ICollection<GenreListItem> Genres { get; set; } = new List<GenreListItem>();
     }
 }

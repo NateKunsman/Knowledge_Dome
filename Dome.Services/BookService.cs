@@ -46,23 +46,13 @@ namespace Dome.Services
                     .Select(e => new BookLists
                     {
                         BookId = e.BookId,
-                        Title = e.Title
+                        Title = e.Title,
+                        Genres = e.Genres.Select(n => new GenreListItem { GenreName = n.Genre.GenreName, GenreId = n.Genre.GenreId }).ToList(),
+                        Authors = e.Authors.Select(n => new AuthorList { FullName = n.Author.FullName }).ToList()
                     });
+
                 return query.ToArray();
             }
-/*            using (var ctx = new ApplicationDbContext())
-            {
-                var query = ctx
-                    .BookGenres
-                    .Select(e => new BookLists
-                    {
-                        BookId = e.BookId,
-                        Title = e.Book.Title,
-                        AuthorName = e.Book.Author.FullName,
-                        Genres = e.Genre.GenreName.ToList()
-                    });
-                
-            }*/
         }
         //Getting the Book by Title
         public BookDetails GetBookByTitle(string title)
@@ -101,7 +91,13 @@ namespace Dome.Services
                 var query = ctx
                     .BookAuthors
                     .Where(e => e.Author.FullName == authorName)
-                    .Select(e => new BookLists { BookId = e.BookId, Title = e.Book.Title/*, AuthorName = e.Author.FullName*/ });
+                    .Select(e => new BookLists 
+                    { 
+                        BookId = e.BookId, 
+                        Title = e.Book.Title, 
+                        Genres = e.Book.Genres.Select(n => new GenreListItem { GenreName = n.Genre.GenreName, GenreId = n.Genre.GenreId }).ToList(),
+                        Authors = e.Book.Authors.Select(n => new AuthorList { FullName = n.Author.FullName }).ToList()
+                    });
                 return query.ToArray();
             }
         }
@@ -113,7 +109,13 @@ namespace Dome.Services
                 var query = ctx
                     .BookGenres
                     .Where(e => e.Genre.GenreName == genreName)
-                    .Select(e => new BookLists { BookId = e.BookId, Title = e.Book.Title, /*AuthorName = e.Book.Author.FullName*/ });
+                    .Select(e => new BookLists 
+                    { 
+                        BookId = e.BookId, 
+                        Title = e.Book.Title, 
+                        Authors = e.Book.Authors.Select(n => new AuthorList { FullName = n.Author.FullName }).ToList(),
+                        Genres = e.Book.Genres.Select(n => new GenreListItem { GenreName = n.Genre.GenreName, GenreId = n.Genre.GenreId }).ToList(),
+                    });
                 return query.ToArray();
             }
         }
